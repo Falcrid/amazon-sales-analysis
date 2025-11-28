@@ -23,4 +23,4 @@ Exploratory Data Analysis and Machine Learning project on 1,400+ Amazon products
 Source: [Kaggle - Amazon Sales Dataset](https://www.kaggle.com/datasets/karkavelrajaj/amazon-sales-dataset)
 
 ## Author
-Mert Can - Sales Analytics Professional transitioning to Data Science
+Mert Can Akdogan
