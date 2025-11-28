@@ -48,16 +48,6 @@ The analysis yielded several actionable insights for sales strategy:
 * **TextBlob** (Sentiment Analysis / NLP)
 * **Scikit-learn** (Machine Learning & Grid Search)
 
-## How to Run
-
-1.  Clone the repository.
-2.  Install the required dependencies:
-    ```bash
-    pip install pandas numpy matplotlib seaborn scipy textblob scikit-learn wordcloud
-    ```
-3.  Run the Jupyter Notebook or the Python script to reproduce the analysis and visualizations.
-
 ---
 
-**Author:** Mert Can Akdogan
-*Sales Analytics & Data Analysis*
+**Author:** Mert Can Akdogan https://www.linkedin.com/in/mertcanakdogan/
