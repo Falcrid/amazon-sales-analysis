@@ -58,10 +58,12 @@ Comprehensive Exploratory Data Analysis, Sentiment Analysis, and Machine Learnin
 
 ## Model Performance
 
-| Model | MAE | R² Score |
-|-------|-----|----------|
-| Linear Regression | 0.205 | 0.100 |
-| Random Forest | 0.181 | 0.188 |
+| Model | MAE | Test R² | CV R² (5-Fold) |
+|-------|-----|---------|----------------|
+| Linear Regression | 0.205 | 0.100 | 0.050 (+/- 0.117) |
+| Random Forest | 0.181 | 0.188 | 0.106 (+/- 0.223) |
+
+**Note:** Cross-validation provides more realistic performance estimates. The variance suggests rating prediction requires additional features (product descriptions, image quality, etc.) for higher accuracy.
 
 ## Feature Importance (Random Forest)
 1. Rating Count: 29.0%
