@@ -1,85 +1,63 @@
-# Amazon Sales Dataset Analysis
+# Amazon Sales Data Analysis and Rating Prediction
+
+This repository contains a comprehensive exploratory data analysis (EDA) and machine learning project focused on Amazon sales data. The goal of this project was to go beyond simple visualizations and apply rigorous statistical testing to understand what truly drives customer satisfaction and product ratings in the e-commerce space.
+
+The analysis answers key business questions regarding pricing strategies, the impact of discounts on perceived quality, and the relationship between review sentiment and numerical ratings.
 
 ## Project Overview
-Comprehensive Exploratory Data Analysis, Sentiment Analysis, and Machine Learning project analyzing 1,465 Amazon products across 9 categories. This project demonstrates end-to-end data science workflow from data cleaning to predictive modeling.
 
-## Dataset
-- Source: [Kaggle - Amazon Sales Dataset](https://www.kaggle.com/datasets/karkavelrajaj/amazon-sales-dataset)
-- Products: 1,465
-- Categories: 9
-- Brands: 437
+Using a dataset of over 1,400 Amazon products (predominantly electronics and accessories), I conducted a detailed analysis to identify patterns in sales and customer feedback. The project is structured into three main phases: data cleaning, statistical hypothesis testing, and predictive modeling.
+
+## Methodology
+
+### 1. Data Cleaning and Preparation
+The raw dataset required significant preprocessing to be usable for analysis:
+- Removed currency symbols and percentage signs to convert price and discount columns into floating-point numbers.
+- Handled missing values in ratings and review counts using median imputation to maintain distribution integrity.
+- Extracted main categories and sub-categories from hierarchical string data.
+
+### 2. Statistical Analysis
+I used several statistical tests to validate assumptions and find significant relationships, rather than relying solely on visual interpretation:
+- **Shapiro-Wilk Test:** Confirmed that key variables (Price, Rating, Discount) do not follow a normal distribution.
+- **Kruskal-Wallis Test:** Used to determine that there are statistically significant differences in ratings between different product categories and price segments.
+- **Spearman Correlation:** Selected over Pearson due to the non-normal distribution of data. This revealed a statistically significant negative correlation between discount percentage and product rating.
+
+### 3. Machine Learning & Predictive Modeling
+To predict product ratings based on available features, I implemented and compared three regression models:
+- Linear Regression
+- Random Forest Regressor
+- Gradient Boosting Regressor
+
+After evaluating performance using R-squared and RMSE metrics, the **Random Forest Regressor** proved to be the most effective model. I further optimized it using GridSearchCV for hyperparameter tuning (optimizing `n_estimators`, `max_depth`, and `min_samples_split`).
+
+## Key Business Insights
+
+The analysis yielded several actionable insights for sales strategy:
+
+* **The Discount Paradox:** Contrary to the expectation that lower prices yield happier customers, there is a weak negative correlation between discount percentage and ratings. Heavily discounted products tend to receive lower ratings, potentially due to quality issues or "too good to be true" customer expectations.
+* **Engagement Drivers:** The strongest predictors for a product's rating are not its price, but the volume of reviews (`rating_count`) and the sentiment of the review text.
+* **Category Performance:** Niche categories like "Office Products" outperform broader categories like "Home & Kitchen" in average customer satisfaction.
+* **Price Segments:** Products in the "Luxury" price segment show more consistent and higher ratings compared to "Budget" items.
 
 ## Technologies Used
-- Python (Pandas, NumPy)
-- Data Visualization (Matplotlib, Seaborn)
-- Natural Language Processing (TextBlob, WordCloud)
-- Machine Learning (Scikit-learn)
 
-## Analysis Performed
+* **Python** (Data Analysis & Modeling)
+* **Pandas & NumPy** (Data Manipulation)
+* **Matplotlib & Seaborn** (Visualization)
+* **SciPy** (Statistical Testing)
+* **TextBlob** (Sentiment Analysis / NLP)
+* **Scikit-learn** (Machine Learning & Grid Search)
 
-### 1. Exploratory Data Analysis
-- Rating distribution analysis
-- Category-wise product distribution
-- Price segmentation (Budget, Mid-Range, Premium, Luxury)
+## How to Run
 
-### 2. Brand Analysis
-- Top 15 brands by product count
-- Brand performance comparison (rating, reviews, discount)
+1.  Clone the repository.
+2.  Install the required dependencies:
+    ```bash
+    pip install pandas numpy matplotlib seaborn scipy textblob scikit-learn wordcloud
+    ```
+3.  Run the Jupyter Notebook or the Python script to reproduce the analysis and visualizations.
 
-### 3. Sentiment Analysis
-- Review sentiment extraction using TextBlob
-- Sentiment-Rating correlation analysis
-- Word Cloud visualization of common review terms
+---
 
-### 4. Machine Learning
-- Models: Linear Regression, Random Forest
-- Target: Product Rating prediction
-- Features: Price, Discount, Rating Count, Review Sentiment
-
-## Key Findings
-
-| Metric | Value |
-|--------|-------|
-| Average Discount | 47.7% |
-| Average Rating | 4.10/5 |
-| Average Sentiment | 0.268 (positive) |
-| Best Model R² | 0.188 |
-
-### Top Insights
-- Review sentiment shows stronger correlation with rating (0.178) than discount rate (-0.155)
-- Luxury products have highest average rating (4.18)
-- Rating Count is the best predictor of product rating (29.0%)
-- Review Sentiment is the second most important feature (27.1%)
-
-### Brand Performance
-- Highest rated brand: AmazonBasics (4.31)
-- Most reviewed brand: Redmi (avg 72,249 reviews)
-- Lowest discount brand: Redmi (25.7%) - premium positioning
-
-## Model Performance
-
-| Model | MAE | Test R² | CV R² (5-Fold) |
-|-------|-----|---------|----------------|
-| Linear Regression | 0.205 | 0.100 | 0.050 (+/- 0.117) |
-| Random Forest | 0.181 | 0.188 | 0.106 (+/- 0.223) |
-
-**Note:** Cross-validation provides more realistic performance estimates. The variance suggests rating prediction requires additional features (product descriptions, image quality, etc.) for higher accuracy.
-
-## Feature Importance (Random Forest)
-1. Rating Count: 29.0%
-2. Review Sentiment: 27.1%
-3. Discount Percentage: 15.2%
-4. Actual Price: 14.7%
-5. Discounted Price: 14.0%
-
-## Business Recommendations
-- High review count indicates reliable product rating
-- Discount rate alone does not guarantee customer satisfaction
-- Encourage customer reviews to build product credibility
-- Focus on review sentiment for quality monitoring
-
-## Files
-- `amazon-sales-analysis.ipynb` - Complete Jupyter notebook with all analysis
-
-## Author
-Mert Can Akdogan - [LinkedIn](https://www.linkedin.com/in/mertcanakdogan/)
+**Author:** Mert Can Akdogan
+*Sales Analytics & Data Analysis*
